@@ -644,7 +644,6 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
-        { 'clang-format', version = 'v20' },
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -695,12 +694,6 @@ require('lazy').setup({
           }
         end
       end,
-      formatters = {
-        ['clang-format'] = {
-          command = vim.fn.stdpath 'data' .. '/mason/bin/clang-format',
-          args = { '--style=file' },
-        },
-      },
       formatters_by_ft = {
         lua = { 'stylua' },
         c = { 'clang-format' },
@@ -709,7 +702,6 @@ require('lazy').setup({
         python = { 'isort', 'black' },
         fortran = { 'fprettify' },
         cmake = { 'gersemi' },
-        cpp = { 'clang-format' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
